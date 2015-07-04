@@ -1,0 +1,14 @@
+<section id="listagem" class='fix'>
+    <header class="fix">
+        <h2>Filmes Relacionados</h2>
+    </header>
+    <ul>
+        {% for movie in related_movies %}
+        {% if forloop.counter|divisibleby:"5" %}
+            <li class="fl last"><a href="{{ movie.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ movie.photo }}" alt="{{ movie.title }}"></a></li>
+        {% else %}
+            <li class="fl"><a href="{{ movie.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ movie.photo }}" alt="{{ movie.title }}"></a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</section>

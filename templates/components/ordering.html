@@ -1,0 +1,15 @@
+<header class="fix">
+    <h1 class="fl">{% if not view.request.resolver_match.kwargs.gender %}
+            Listagem de filmes
+        {% else %}
+            {{ view.request.resolver_match.kwargs.gender }}
+        {% endif %}
+    </h1>
+    <form action="." method="get">
+        <select name="ordering" id="" class="fr" onchange="this.form.submit()">
+            <option value="">Ordenar por:</option>
+            <option value="a-z" {% if view.request.GET.ordering == 'a-z' %}selected{% endif %}>a - z</option>
+            <option value="z-a" {% if view.request.GET.ordering == 'z-a' %}selected{% endif %}>z - a</option>
+        </select>
+    </form>
+</header>

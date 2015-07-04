@@ -1,0 +1,27 @@
+{% extends "components/base.html" %}
+{% load static from staticfiles %}
+{% block title %}Storm Security - Genero{% endblock %}
+
+{% block content %}
+	{% include "components/ordering.html" %}
+
+	<section id="listagem" class='fix'>
+		<ul>
+			{% for movie in movie_list %}
+			{% if forloop.counter|divisibleby:"5" %}
+				<li class="fl last">
+                    <a href="{{ movie.get_absolute_url }}">
+                    	<img src="{{ MEDIA_URL }}{{ movie.photo }}" alt="{{ movie.title }}">
+                    </a>
+                </li>
+			{% else %}
+				<li class="fl">
+                    <a href="{{ movie.get_absolute_url }}">
+                        <img src="{{ MEDIA_URL }}{{ movie.photo }}" alt="{{ movie.title }}">
+                    </a>
+                </li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	</section>
+{% endblock %}

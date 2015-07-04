@@ -1,0 +1,27 @@
+{% extends "components/base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Storm Security - Atores{% endblock %}
+
+{% block content %}
+	<header class="fix">
+		<h1>Atores</h1>
+	</header>
+
+	<section id="Infos" class='fix'>
+		<figure class="fl"><img src="{{ MEDIA_URL }}{{ object.photo }}" alt="{{ object.name }}"></figure>
+
+		<article class="fl">
+			<p class="tit">Ator</p>
+			<h2>{{ object.name }}</h2>
+			<p class="txt">
+				<strong>País:</strong> {{ object.country.name }}
+			</p>
+		</article>
+	</section>
+
+	{% if related_movies %}
+		{% include "components/related_movies.html" %}
+	{% endif %}
+
+{% endblock %}

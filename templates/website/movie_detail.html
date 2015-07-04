@@ -1,0 +1,42 @@
+{% extends "components/base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Storm Security - {{ object.title }}{% endblock %}
+
+{% block content %}
+		<header class="fix">
+			<h1>{{ object.title }}</h1>
+		</header>
+		
+		<section id="Infos" class='fix'>
+			<figure class="fl"><img src="{{ MEDIA_URL }}{{ object.photo }}" alt="{{ object.title }}"></figure>
+
+			<article class="fl">
+				<p class="tit">Sinopse:</p>
+				<p class="txt">{{ object.synopsis }}</p>
+				<p class="tit">Genero:</p>
+				<p class="txt">
+                    {% for gender in object.gender.all %}
+                    	{% if not forloop.last %}
+                    		<a href="{% url "gender_list" gender.slug %}">{{ gender.name }}</a> e
+						{% else %}
+                    		<a href="{% url "gender_list" gender.slug %}">{{ gender.name }}</a>.
+                    	{% endif %}
+                	{% endfor %}
+                </p>
+				<p class="tit">Atores:</p>
+				<p class="txt">
+                    {% for gender in object.stars.all %}
+                    	{% if not forloop.last %}
+                    		<a href="{{ gender.get_absolute_url }}">{{ gender.name }}</a> e
+						{% else %}
+                    		<a href="{{ gender.get_absolute_url }}">{{ gender.name }}</a>.
+                    	{% endif %}
+                	{% endfor %}
+			</article>
+
+		</section>
+		{% if related_movies %}
+			{% include "components/related_movies.html" %}
+		{% endif %}
+{% endblock %}
