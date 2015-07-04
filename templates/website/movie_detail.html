@@ -13,7 +13,7 @@
 
 			<article class="fl">
 				<p class="tit">Sinopse:</p>
-				<p class="txt">{{ object.synopsis }}</p>
+				<p class="txt">{{ object.synopsis|safe }}</p>
 				<p class="tit">Genero:</p>
 				<p class="txt">
                     {% for gender in object.gender.all %}
