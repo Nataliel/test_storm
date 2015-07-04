@@ -5,5 +5,4 @@
 *.pyc
 *.egg
 .idea
-media/uploads
 static/
